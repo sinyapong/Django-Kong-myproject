@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}หน้าแรก{% endblock title %}
+{% block content %}
+<div class="p-3 mb-2 bg-primary text-white">
+    <h3>ประวัตินักเรียน</h3>
+</div>
+    
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ลำดับ</th>
+            <th scope="col">ชื่อ - สกุล</th>
+            <th scope="col">อายุ</th>
+            <th scope="col">ระดับการศึกษา</th>
+            <th scope="col">คะแนน</th>
+            <th scope="col">แก้ไข</th>
+            <th scope="col">ลบ</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for personal in personals %}
+          <tr>
+            <th scope="row">{{ personal.id }}</th>
+            <td>{{ personal.first_name }} {{ personal.last_name }}</td>
+            <td>{{ personal.age }}</td>
+            <td>{{ personal.grade }}</td>
+            <td>{{ personal.score }}</td>
+            <td><a href="{% url 'edit' personal.id %}" class="btn btn-warning">แก้ไข</a></td>
+            <td><a href="{% url 'delete' personal.id %}" class="btn btn-success"
+                 onclick="return confirm('ต้องการลบ{{personal.first_name}}หรือไม่')">ลบ</a></td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+{% endblock content %}

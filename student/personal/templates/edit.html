@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}บันทึกประวัตินักเรียน{% endblock title %}
+{% block content %}
+<div class="p-3 mb-2 bg-primary text-white">
+    <h3>แก้ไขประวัตินักเรียน</h3>
+</div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="fname">ชื่อนักเรียน</label>
+            <input type="text" name="firstname" class="form-control" value="{{personals.first_name}}">
+        </div>
+        <div class="form-group">
+            <label for="lname">นามสกุลนักเรียน</label>
+            <input type="text" name="lastname" class="form-control" value="{{personals.last_name}}">
+        </div>
+        <div class="form-group">
+            <label for="age">อายุนักเรียน</label>
+            <input type="number" name="age" class="form-control" value="{{personals.age}}">
+        </div>
+        <div class="form-group">
+            <label for="grade">ระดับการศึกษา</label>
+            <input type="text" name="grade" class="form-control" value="{{personals.grade}}">
+        </div>
+        <div class="form-group mb-3">
+            <label for="score">คะแนน</label>
+            <input type="number" name="score" class="form-control" value="{{personals.score}}">
+        </div>
+        <input type="submit" value="แก้ไขข้อมูล" class="btn btn-success">
+    </form>
+{% endblock content %}
